@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body>
+    <div id="main">
+      <div id="left">
+       <h1>VS CODE</h1>
+        <div id="nav">
+          <h2>FolderName</h2>
+
+          <div id="icons">
+          <i id="fileicon" class="ri-file-add-fill"></i>
+          <i id="foldericon" class="ri-folder-add-line"></i>
+         <a href="/"> <i id="refressicon" class="ri-restart-line"></i></a>
+        </div>
+
+       </div>
+       <div class="forms">
+           <form action="/createFile" id="file">
+          <input type="text" name="fileName" placeholder="fileName">
+          </form>
+          <form action="/createFolder" id="folder">
+          <input type="text" name="folderName" placeholder="folderName">
+          </form>
+        </div>
+
+        <%arr.forEach(function(files){%>
+        <%if(files.is===true) {%>
+          <div class="files">
+           <a href="/file/<%=files.name%>"> <h3><i class="ri-folder-3-line"></i>
+            <%=files.name%>
+          </h3></a>
+          <div class="side">
+            <i class="ri-pencil-line"></i>
+            <a href="/dfolder/<%=files.name%>"> <i class="ri-delete-bin-6-fill"></i></a> 
+          </div>
+          </div>
+              <%}else{%>
+                   <div class="files">
+                    <a href="/file/<%=files.name%>"><h3><i class="ri-file-3-line"></i>
+                      <%=files.name%>
+                     </h3></a>
+                      <div class="side">
+                        <i class="ri-pencil-line"></i>
+                       <a href="/dfile/<%=files.name%>"><i class="ri-delete-bin-6-fill"></i></a>
+                      </div>
+                 </div>
+                   <%}%>
+                 <% })%>
+              
+      </div>
+
+     <div id="right">
+        
+     <h4> Start writing from here</h4>
+     </div>
+
+
+  
+    </div>
+ 
+    <script>
+    const fileIcon = document.querySelector("#fileicon");
+    const folderIcon = document.querySelector("#foldericon");
+    const file = document.querySelector("#file");
+    const folder = document.querySelector("#folder");
+    function chaluband() {
+      document.querySelectorAll("form").forEach(function (data) {
+        data.style.display = "none";
+      })
+    }
+
+    fileIcon.addEventListener("click", function () {
+      chaluband();
+      file.style.display = "initial";
+
+    }
+    )
+    folderIcon.addEventListener("click", function () {
+      chaluband();
+      folder.style.display = "initial";
+
+    }
+    )
+    window.addEventListener("keydown", function (det) {
+
+      if (det.keyCode === 27) {
+        chaluband();
+        document.querySelectorAll("input").forEach(function (ele) {
+          ele.value = " ";
+        })
+      }
+
+    })
+
+    </script>
+
+
+  </body>
+
+</html>
